@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<title>Убить препроцессоры</title>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="css/screen-16x10.css">
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="shower list">
+
+	<header class="caption">
+		<h1>Убить препроцессоры</h1>
+		<p>Видяева Валентина, hajs#5</p>
+	</header>
+
+
+	<section class="slide slide1" id="cover">
+		<h2>
+			<span>KILL</span><br>
+			<span>PREPROCESSORS</span><br>
+			<span>VOL.1</span>
+		</h2>
+		<p>Vidyaeva Valentina, hajs#5</p>
+	</section>
+
+	<section class="slide slide2">
+		<h2>Дублирование кода</h2>
+		<pre>
+			<code>.btn-1 {</code>
+			<code>	background-color: #FFEB3B;</code>
+			<code>	color: #000;</code>
+			<code>	border: 2px solid #000;</code>
+			<code>}</code>
+			<code>.btn-2 {</code>
+			<code>	background-color: #F48FB1;</code>
+			<code>	color: #fff;</code>
+			<code>	border: 2px solid #903075;</code>
+			<code>}</code>
+		</pre>
+	</section>
+
+	<section class="slide slide3">
+		<h2>Мечты</h2>
+		<pre>
+			<code>function customBtn (background, color, border-color) {</code>
+			<code>	background-color: background;</code>
+			<code>	color: color;</code>
+			<code>	border: 2px solid border-color;</code>
+			<code>}</code>
+
+			<code>.btn-1 {</code>
+			<code>	customBtn(#FFEB3B, #000, #000)</code>
+			<code>}</code>
+			<code>.btn-2 {</code>
+			<code>	customBtn(#F48FB1, #fff, #903075)</code>
+			<code>}</code>
+		</pre>
+	</section>
+
+	<section class="slide slide4">
+		<div class="preprocessors-grid">
+			<img src="img/sass.png" alt="">
+			<img src="img/less.png" alt="">
+			<img src="img/stylus.svg" alt="">
+		</div>
+	</section>
+
+	<section class="slide slide5">
+		<h2>Реальность</h2>
+		<pre>
+			<code>@mixin customBtn($background, $color, $border-color) {</code>
+			<code>	background-color: $background;</code>
+			<code>	color: $color;</code>
+			<code>	border: 2px solid $border-color;</code>
+			<code>}</code>
+
+			<code>.btn-1 {</code>
+			<code>	@include customBtn(#FFEB3B, #000, #000)</code>
+			<code>}</code>
+			<code>.btn-2 {</code>
+			<code>	@include customBtn(#F48FB1, #fff, #903075)</code>
+			<code>}</code>
+		</pre>
+	</section>
+
+	<section class="slide slide6" id="cover">
+		<h2><span>CSS Custom</span><br><span>Properties</span></h2>
+		<p class="note"><a href="https://www.w3.org/TR/css-variables-1/#document-conventions">Спецификация</a></p>
+	</section>
+
+	<section class="slide slide7">
+		<h2>Факты</h2>
+		<ol>
+			<li>Кандидат в рекомендации с 3 декабря 2015 года</li>
+			<li>Поддержка: <br>
+				Firefox - c 22 июля 2014 <br>
+				Chrome, Safari - c марта 2016 <br>
+				Edge - c 17 октября 2017
+			</li>
+			<li>Можно использовать как в стилевых файлах, так и в svg и html</li>
+			<li>Значение может быть абсолютно любым</li>
+		</ol>
+	</section>
+
+	<section class="slide slide8">
+		<h2>Преимущества</h2>
+		<ol>
+			<li>CSS переменные живут в DOMе</li>
+			<li>Работают по правилам каскада</li>
+			<li>Могут изменяться из JS</li>
+		</ol>
+	</section>
+
+	<section class="slide slide9">
+		<figure>
+			<img class="cover" src="img/kb.jpg" alt="">
+		</figure>
+	</section>
+
+	<section class="slide slide10">
+		<h2>Синтаксис</h2>
+		<pre>
+			<code>:root {</code>
+			<code>	--font-size: 20px</code>
+			<code>}</code>
+			<code>body {</code>
+			<code>	font-size: var(--font-size)</code>
+			<code>}</code>
+		</pre>
+	</section>
+
+	<section class="slide slide12">
+		<h2>Работают в @media выражениях</h2>
+		<pre>
+			<code>:root {</code>
+			<code>	--font-size: 20px</code>
+			<code>}</code>
+			<code>@media(max-width: 768px) {</code>
+			<code>	:root {</code>
+			<code>		--font-size: 16px</code>
+			<code>	}</code>
+			<code>}</code>
+			<code>body {</code>
+			<code>	font-size: var(--font-size)</code>
+			<code>}</code>
+		</pre>
+	</section>
+
+	<section class="slide slide13">
+		<h2>Математические выражения</h2>
+		<pre>
+			<code>:root{</code>
+			<code>	--base-size: 10px;</code>
+			<code>	--size-xl: calc(2*var(--base-size));</code>
+			<code>	--size-l: calc(var(--base-size) + 2px);</code>
+			<code>	--size-s: calc(var(--base-size) - 2px);</code>
+			<code>	--size-xs: calc(var(--base-size) / 2);</code>
+			<code>}</code>
+		</pre>
+	</section>
+
+	<section class="slide slide14">
+		<h2>Работают по правилам каскада</h2>
+		<pre>
+			<code>:root {</code>
+			<code>	--btn-background-color: #FFEB3B;</code>
+			<code>	--btn-color: #000;</code>
+			<code>	--btn-border-color: #000;</code>
+			<code>}</code>
+			<code>.block {</code>
+			<code>	--btn-background-color: #F48FB1;</code>
+			<code>	--btn-color: #fff;</code>
+			<code>	--btn-border-color: #903075;</code>
+			<code>}</code>
+			<code>.btn {</code>
+			<code>	background-color: var(--btn-background-color);</code>
+			<code>	color: var(--btn-color);</code>
+			<code>	border: 2px solid var(--btn-border-color);</code>
+			<code>}</code>
+		</pre>
+	</section>
+
+	<section class="slide slide15">
+		<h2>Работают по правилам каскада</h2>
+		<pre>
+			<code>.btn {</code>
+			<code>	background-color: var(--btn-background-color);</code>
+			<code>	color: var(--btn-color);</code>
+			<code>	border: 2px solid var(--btn-border-color);</code>
+			<code>}</code>
+			<code>.block {</code>
+			<code>	--btn-background-color: #F48FB1;</code>
+			<code>	--btn-color: #fff;</code>
+			<code>	--btn-border-color: #903075;</code>
+			<code>}</code>
+			<code>:root {</code>
+			<code>	--btn-background-color: #FFEB3B;</code>
+			<code>	--btn-color: #000;</code>
+			<code>	--btn-border-color: #000;</code>
+			<code>}</code>
+		</pre>
+	</section>
+
+	<section class="slide slide16">
+		<h2>Работают в .svg и .html</h2>
+		<pre>
+			<code>&ltsvg&gt;</code>
+			<code>	&ltstyle&gt;</code>
+			<code>		svg {</code>
+			<code>			--ribbon-color: #F48FB1;</code>
+			<code>		}</code>
+			<code>	&lt/style&gt;</code>
+			<code>	&ltpath fill="var(--ribbon-color)" d="M0 0h50v100L25 80 0 100"/&gt;</code>
+			<code>&lt/svg&gt;</code>
+		</pre>
+	</section>
+
+	<section class="slide slide17">
+		<h2>Валидно любое значение</h2>
+		<pre>
+			<code>:root {</code>
+			<code>	--text: some text;</code>
+			<code>	--empty:;</code>
+			<code>	--initial: initial;</code>
+			<code>	--bg-image: url(../img/image.jpg) no-repeat;</code>
+			<code>	--count: if(x > 5) this.count = 10;</code>
+			<code>}</code>
+		</pre>
+	</section>
+
+	<section class="slide slide18">
+		<h2>Работают из JS</h2>
+		<pre>
+			<code>var root = document.querySelector(':root');</code>
+			<code>var htmlStyle = getComputedStyle(root);</code>
+			<code>var baseColor = htmlStyle.<mark>getPropertyValue('--baseColor')</mark>;</code>
+			<code>root.style.<mark>setProperty('--baseColor', '#FFEB3B')</mark>;</code>
+		</pre>
+	</section>
+
+	<section class="slide slide19">
+		<h2>Примеры Custom properties и JS</h2>
+		<ul>
+			<li><a target="blank" href="https://css-tricks.com/making-custom-properties-css-variables-dynamic/">Трансформации</a></li>
+			<li><a target="blank" href="https://codepen.io/malyw/full/xgdEQp/">Интерак	тивность</a></li>
+			<li><a target="blank" href="https://codepen.io/danwilson/pen/BRdJVZ">Аккордеон</a></li>
+			<li><a target="blank" href="https://codepen.io/CameronFitzwilliam/full/QrdLyN/">День/ночь</a></li>
+			<li><a target="blank" href="https://css-tricks.com/css-custom-properties-theming/">Темы</a></li>
+		</ul>
+	</section>
+
+	<section class="slide slide20">
+		<h2>Шрифт в зависимости от языка</h2>
+		<pre>
+			<code>var userLang = window.navigator.language || navigator.userLanguage;</code>
+			<code>switch (userLang) {</code>
+			<code>	case 'en':</code>
+			<code>		root.style.setProperty('--font', 'url("../fonts/font-latin.woff2")');</code>
+			<code>		break;</code>
+			<code>	case 'ru':</code>
+			<code>		root.style.setProperty('--font', 'url("../fonts/font-cyrillic.woff2")');</code>
+			<code>		break;</code>
+			<code>	default:</code>
+			<code>		root.style.setProperty('--font', 'url("../fonts/font.woff2")');</code>
+			<code>}</code>
+		</pre>
+	</section>
+
+	<section class="slide slide11">
+		<figure>
+			<img class="cover" src="img/kb2.jpg" alt="">
+		</figure>
+	</section>
+
+
+	<section class="slide slide11">
+		<figure>
+			<img class="cover" src="img/caniuse.png" alt="">
+		</figure>
+	</section>
+
+	<section class="slide slide15">
+		<h2>Препроцессор и фолбэк</h2>
+		<pre>
+			<code>$btn-background-color: #FFEB3B</code>
+			<code>$btn-color: #000</code>
+			<code>$btn-border-color: #000</code>
+			<code>\:root</code>
+			<code>	--btn-background-color: #FFEB3B</code>
+			<code>	--btn-color: #000</code>
+			<code>	--btn-border-color: #000</code>
+			<code>.btn</code>
+			<code>	background-color: $btn-background-color</code>
+			<code>	color: $btn-color</code>
+			<code>	border: 2px solid $btn-border-color</code>
+			<code>	@supports (--var: var)</code>
+			<code>		background-color: var(--btn-background-color)</code>
+			<code>		color: var(--btn-color)</code>
+			<code>		border: 2px solid var(--btn-border-color)</code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2 class="shout shrink">Спасибо!</h2>
+	</section>
+
+
+	<div class="progress"></div>
+
+	<script src="shower.min.js"></script>
+</body>
+</html>
